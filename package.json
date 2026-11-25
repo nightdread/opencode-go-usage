@@ -4,6 +4,11 @@
   "description": "OpenCode Go usage limits as a pill in OpenCode Desktop",
   "license": "MIT",
   "type": "module",
+  "files": ["src", "dist"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nightdread/opencode-go-usage.git"
+  },
   "exports": {
     ".": "./src/index.ts",
     "./tui": "./src/tui.tsx",

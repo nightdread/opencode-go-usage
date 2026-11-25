@@ -1,5 +1,34 @@
 # opencode-go-usage
 
+OpenCode Go usage limits as a pill in OpenCode Desktop — no need to open the console.
+
+![The OpenCode Go usage pill menu](docs/pill.png)
+
+The pill above your composer shows the three Go allowances: the 5-hour window, the weekly limit and the monthly one, refreshed every minute. Green by default, yellow above 65%, red above 85%; click it for each limit's reset time. The plugin reads your saved OpenCode Go key through the running OpenCode server's API and polls `https://opencode.ai/inference/go/v1/usage` — the key is never written to a config file.
+
+### Install
+
+Requires OpenCode Desktop and a saved OpenCode Go key (`/connect` → OpenCode Go).
+
+```sh
+opencode plugin add github:nightdread/opencode-go-usage
+```
+
+or manually: copy the folder with `gui-experimental.cjs` at its root, e.g. `~/.config/opencode/plugins/go-usage`, and add the path to `plugins` in `opencode.json`.
+
+### Build from source
+
+```sh
+npm install
+npm run bundle
+```
+
+MIT licensed. Русская версия README — ниже.
+
+---
+
+# opencode-go-usage · Русский
+
 GUI-плагин OpenCode Desktop: показывает остаток лимитов OpenCode Go прямо в приложении — пилюлей над строкой ввода, чтобы не открывать консоль.
 
 ![Меню пилюли с лимитами OpenCode Go](docs/pill.png)
