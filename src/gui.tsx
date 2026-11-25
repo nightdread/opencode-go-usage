@@ -4,13 +4,37 @@ import { ComposerPill, Plugin } from "@opencode/plugin/gui"
 type Meter = { status?: string; percent?: number; resetsAt?: string }
 type Usage = { rolling?: Meter; weekly?: Meter; monthly?: Meter }
 
-const METERS: [keyof Usage, string][] = [
-  ["rolling", "5ч"],
-  ["weekly", "нед"],
-  ["monthly", "мес"],
+const METERS: [keyof Usage, string, string][] = [
+  ["rolling", "pill.short.five", "row.five"],
+  ["weekly", "pill.short.week", "row.week"],
+  ["monthly", "pill.short.month", "row.month"],
 ]
 
 export default Plugin.define({
+  i18n: {
+    en: {
+      "pill.title": "OpenCode Go usage (5-hour / weekly / monthly)",
+      "pill.short.five": "5h",
+      "pill.short.week": "wk",
+      "pill.short.month": "mo",
+      "row.five": "5-hour window",
+      "row.week": "Weekly limit",
+      "row.month": "Monthly limit",
+      "row.reset": "resets",
+      "pill.nodata": "Go: no data",
+    },
+    ru: {
+      "pill.title": "Использование OpenCode Go (5-часовое окно / неделя / месяц)",
+      "pill.short.five": "5ч",
+      "pill.short.week": "нед",
+      "pill.short.month": "мес",
+      "row.five": "5-часовое окно",
+      "row.week": "Недельный лимит",
+      "row.month": "Месячный лимит",
+      "row.reset": "сброс",
+      "pill.nodata": "Go: нет данных",
+    },
+  },
   setup(ctx) {
     const [usage, setUsage] = createSignal<Usage>()
     const [gone, setGone] = createSignal("")
@@ -68,17 +92,17 @@ export default Plugin.define({
       id: "usage",
       show: () => {
         const u = usage()
-        if (!u) return gone() ? { label: "Go: нет данных", tone: "warning", title: "Лимиты Go недоступны: " + gone() } : undefined
+        if (!u) return gone() ? { label: ctx.t("pill.nodata"), tone: "warning", title: ctx.t("pill.title") } : undefined
         return {
-          label: "Go " + METERS.map(([key, short]) => `${short} ${u[key]?.percent ?? "?"}%`).join(" · "),
+          label: "Go " + METERS.map(([, short, key]) => `${ctx.t(short)} ${u[key]?.percent ?? "?"}%`).join(" · "),
           tone: tone(u),
-          title: "Использование OpenCode Go (5-часовое окно / неделя / месяц)",
-          rows: METERS.map(([key, short]) => ({
+          title: ctx.t("pill.title"),
+          rows: METERS.map(([key, , row]) => ({
             id: key,
-            label: { rolling: "5-часовое окно", weekly: "Недельный лимит", monthly: "Месячный лимит" }[key] + ": " + (u[key]?.percent ?? "?") + "%",
+            label: ctx.t(row) + ": " + (u[key]?.percent ?? "?") + "%",
             tone: u[key]?.status === "rate-limited" ? "danger" : "success",
             // 5-часовое окно сбрасывается сегодня — достаточно времени; неделя и месяц — всегда с датой.
-            detail: u[key]?.resetsAt ? "сброс " + when(u[key], key !== "rolling") : "",
+            detail: u[key]?.resetsAt ? ctx.t("row.reset") + " " + when(u[key], key !== "rolling") : "",
             icon: u[key]?.status === "rate-limited" ? "circle-x" : "circle-check",
           })),
         }
