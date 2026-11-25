@@ -37,7 +37,7 @@ opencode plugin add github:nightdread/opencode-go-usage
 
 ```sh
 npm install
-npm run build
+npm run bundle
 ```
 
 Готовый бандл появится в `dist/gui-experimental.cjs` — скопируйте его в папку плагина.

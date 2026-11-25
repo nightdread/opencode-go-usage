@@ -8,8 +8,7 @@
     "./gui-experimental": "./dist/gui-experimental.cjs"
   },
   "scripts": {
-    "build": "vite build",
-    "prepare": "vite build"
+    "bundle": "vite build"
   },
   "dependencies": {
     "@opencode/plugin": "latest"
