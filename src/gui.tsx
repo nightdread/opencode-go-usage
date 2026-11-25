@@ -110,7 +110,8 @@ export default Plugin.define({
     })
 
     void refresh()
-    const timer = setInterval(() => void refresh(), 5 * 60_000)
+    // Опрос раз в минуту: запрос лёгкий, остаток виден почти живьём.
+    const timer = setInterval(() => void refresh(), 60_000)
     return () => clearInterval(timer)
   },
 })
