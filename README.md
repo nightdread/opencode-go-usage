@@ -11,6 +11,12 @@ The pill above your composer shows the three Go allowances: the 5-hour window, t
 Requires OpenCode Desktop and a saved OpenCode Go key (`/connect` → OpenCode Go).
 
 ```sh
+opencode plugin add @nightdread/opencode-go-usage
+```
+
+or from this repository:
+
+```sh
 opencode plugin add github:nightdread/opencode-go-usage
 ```
 
@@ -42,13 +48,17 @@ GUI-плагин OpenCode Desktop: показывает остаток лими�
 
 Нужен OpenCode Desktop и сохранённый ключ OpenCode Go (`/connect` → OpenCode Go).
 
-Из этого репозитория одной командой:
+```sh
+opencode plugin add @nightdread/opencode-go-usage
+```
+
+или из этого репозитория:
 
 ```sh
 opencode plugin add github:nightdread/opencode-go-usage
 ```
 
-Или вручную: скопируйте папку с `gui-experimental.cjs` в корне, например `~/.config/opencode/plugins/go-usage`, и добавьте путь в `opencode.json`:
+или вручную: скопируйте папку с `gui-experimental.cjs` в корне, например `~/.config/opencode/plugins/go-usage`, и добавьте путь в `plugins` в `opencode.json`.
 
 ```jsonc
 {
