@@ -15,8 +15,13 @@ Go 5ч 8% · нед 6% · мес 50%
 
 Нужен OpenCode Desktop и сохранённый ключ OpenCode Go (`/connect` → OpenCode Go).
 
-1. Скопируйте папку с `gui-experimental.cjs` в корне, например `~/.config/opencode/plugins/go-usage`.
-2. Добавьте путь в `opencode.json`:
+Из этого репозитория одной командой:
+
+```sh
+opencode plugin add github:nightdread/opencode-go-usage
+```
+
+Или вручную: скопируйте папку с `gui-experimental.cjs` в корне, например `~/.config/opencode/plugins/go-usage`, и добавьте путь в `opencode.json`:
 
 ```jsonc
 {

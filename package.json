@@ -4,6 +4,9 @@
   "description": "OpenCode Go usage limits as a pill in OpenCode Desktop",
   "license": "MIT",
   "type": "module",
+  "exports": {
+    "./gui-experimental": "./dist/gui-experimental.cjs"
+  },
   "scripts": {
     "build": "vite build"
   },
