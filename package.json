@@ -5,6 +5,7 @@
   "license": "MIT",
   "type": "module",
   "exports": {
+    "./tui": "./src/tui.tsx",
     "./gui-experimental": "./dist/gui-experimental.cjs"
   },
   "scripts": {
