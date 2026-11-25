@@ -1,6 +1,6 @@
 {
   "name": "@nightdread/opencode-go-usage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "OpenCode Go usage limits as a pill in OpenCode Desktop",
   "license": "MIT",
   "type": "module",
