@@ -94,7 +94,7 @@ export default Plugin.define({
         const u = usage()
         if (!u) return gone() ? { label: ctx.t("pill.nodata"), tone: "warning", title: ctx.t("pill.title") } : undefined
         return {
-          label: "Go " + METERS.map(([, short, key]) => `${ctx.t(short)} ${u[key]?.percent ?? "?"}%`).join(" · "),
+          label: "Go " + METERS.map(([meter, short]) => `${ctx.t(short)} ${u[meter]?.percent ?? "?"}%`).join(" · "),
           tone: tone(u),
           title: ctx.t("pill.title"),
           rows: METERS.map(([key, , row]) => ({
